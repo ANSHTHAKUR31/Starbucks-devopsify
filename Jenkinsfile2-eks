@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/Aseemakram19/starbucks-kubernetes.git'
+                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/ANSHTHAKUR31/Starbucks-devopsify.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -56,7 +56,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image aseemakram19/starbucks:latest > trivyimage.txt" 
+                sh "trivy image anshthkaur31/starbucks:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to EKS Cluster') {
@@ -103,9 +103,9 @@ pipeline{
                     <p>Started by: ${buildUser}</p>
                     <p>Build URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                 """,
-                to: 'mohdaseemakram19@gmail.com',
-                from: 'mohdaseemakram19@gmail.com',
-                replyTo: 'mohdaseemakram19@gmail.com',
+                to: 'masteransh2006@gmail.com',
+                from: 'masteransh2006@gmail.com',
+                replyTo: 'masteransh2006@gmail.com',
                 mimeType: 'text/html',
                 attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
             )
